@@ -1,0 +1,26 @@
+---
+- name: vault.conf
+  template:
+    src: vault.conf.j2
+    dest: "{{vault.config}}"
+    mode: 0644
+
+- name: vault service
+  template:
+    src: vault.service.j2
+    dest: "{{vault.service_path}}"
+    mode: 0644
+
+- name: vault address env var
+  template:
+    src: vault.sh.j2
+    dest: "{{vault.profile_d}}"
+    mode: 0755
+
+- name: Vault as service
+  service:
+    name: vault
+    enabled: yes
+    state: started
+  ignore_errors: true
+

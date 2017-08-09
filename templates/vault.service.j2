@@ -1,0 +1,17 @@
+[Unit]
+Description=Vault Agent
+Requires=network-online.target private-ip.service
+After=network-online.target private-ip.service
+
+[Service]
+Type=idle
+EnvironmentFile=-/etc/default/private-ip
+Environment=GOMAXPROCS=2
+ExecStart=/usr/local/bin/vault server -config {{vault.config}}
+Requires=network-online.target
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

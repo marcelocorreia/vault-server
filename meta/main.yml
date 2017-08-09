@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Marcelo Correia
+  description: Vault with Consul Backend
+  company: Correia IO
+
+  license: license (GPLv2, CC-BY, etc)
+
+  min_ansible_version: 2.3
+
+
+  galaxy_tags: []
+
+dependencies: []
+  
